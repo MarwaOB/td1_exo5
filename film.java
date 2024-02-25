@@ -6,7 +6,9 @@ public class film {
     private String titre;
     private String realisateur;
     private String Synopsis;
+    private int nb_actor;
     private String[] actor;
+   
 
     private String dateCreation;
     public static LocalDate getRandomDate(LocalDate startDate, LocalDate endDate) {
@@ -18,26 +20,49 @@ public class film {
     }
 
     public film() {
+        System.out.println("\t\t\tSaisie des infos sur le film");
+        System.out.println("");
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Entrer le nom du film:");
+        System.out.print("\t\t\t Entrer le nom du film:");
         this.titre = scanner.next();
 
-        System.out.print("Entrer le nom du realisateur:");
+        System.out.print("\t\t\t Entrer le nom du realisateur:");
         this.realisateur = scanner.next();
 
-        System.out.print("Entrer le nb des acteurs du film:");
-        int nb = scanner.nextInt();
+        System.out.print("\t\t\t Entrer le nb des acteurs du film:");
+         this.nb_actor = scanner.nextInt();
 
-        for(int i=0;i<nb;i++) {
-            System.out.print("Entrer le nom du acteur:");
-            this.actor[i] = scanner.next();
-        }
 
-        System.out.print("Entrer un synopsis:");
+         this.actor = new String[nb_actor]; // Initialise le tableau avec la bonne taille
+         for(int i=0;i<this.nb_actor;i++) {
+             System.out.print("\t\t\t Entrer le nom du acteur:");
+             String temp=scanner.next();
+             this.actor[i] =temp;
+           
+         }
+
+  
+
+        System.out.print("\t\t\t Entrer un synopsis:");
         this.Synopsis = scanner.next();
 
-        System.out.print("Entrer la date de creation:");
+        System.out.print("\t\t\t Entrer la date de creation:");
         this.dateCreation = scanner.next();
+       
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$");
+    }
+    public void consulter_film()
+    {   System.out.println("\t\t\tAffichage des infos sur le film");
+        System.out.println("");
+        System.out.println("\t\t\t Affichage des infos sur le film ");
+        System.out.println("\t\t\t le titre du film est debut est "+this.titre);
+        System.out.println("\t\t\t le realisateur est "+this.realisateur);
+        System.out.println("\t\t\t la date de creation est "+this.dateCreation);
+        for (int i=0;i<actor.length;i++)
+        {
+            System.out.println("\t\t\t l'acteur  "+i+ " est : "+this.actor[i]); 
+        }
+        System.out.println("\t\t\t le resume est "+this.Synopsis);
     }
 }
